@@ -18,7 +18,10 @@ class CheckinPostController < UIViewController
                 image: UIImageJPEGRepresentation(@image, 1.0).base64Encoding,
                 created_at: Time.now.to_i
               },
-              withCompletionBlock: lambda { |error, ref| SVProgressHUD.dismiss }
+              withCompletionBlock: lambda do |error, ref|
+                SVProgressHUD.dismiss
+                dismissViewControllerAnimated(true, completion: nil)
+              end
             )
   end
 
