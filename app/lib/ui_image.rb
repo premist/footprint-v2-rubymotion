@@ -1,5 +1,5 @@
 class UIImage
-  def normalize!
+  def normalize
     return self if imageOrientation == UIImageOrientationUp
 
     UIGraphicsBeginImageContextWithOptions(size, false, scale);

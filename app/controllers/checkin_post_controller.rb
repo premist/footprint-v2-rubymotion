@@ -15,7 +15,7 @@ class CheckinPostController < UIViewController
             .childByAutoId.setValue(
               {
                 text: text_view.text,
-                image: UIImageJPEGRepresentation(@image, 1.0).base64Encoding,
+                image: UIImageJPEGRepresentation(@image, 0.8).base64Encoding,
                 created_at: Time.now.to_i
               },
               withCompletionBlock: lambda do |error, ref|
@@ -63,7 +63,7 @@ class CheckinPostController < UIViewController
   end
 
   def image=(img)
-    @image = img.normalize!
+    @image = img.normalize.resizedImageByMagick("1536x1536")
     image_view.image = @image
   end
 
