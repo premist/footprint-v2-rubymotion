@@ -25,6 +25,7 @@ Motion::Project::App.setup do |app|
     pod "Firebase"
     pod "Raven"
     pod "SVProgressHUD"
+    pod "UIImage-ResizeMagick"
   end
 
   app.provisioning_profile = ENV["PROVISIONING_PROFILE"]
