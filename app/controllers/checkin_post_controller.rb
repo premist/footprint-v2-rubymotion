@@ -10,19 +10,28 @@ class CheckinPostController < UIViewController
 
   def publish(sender)
     SVProgressHUD.show
-    firebase.childByAppendingPath(UIDevice.currentDevice.name)
+    record = firebase.childByAppendingPath(UIDevice.currentDevice.name)
             .childByAppendingPath("posts")
-            .childByAutoId.setValue(
-              {
-                text: text_view.text,
-                image: UIImageJPEGRepresentation(@image, 0.8).base64Encoding,
-                created_at: Time.now.to_i
-              },
-              withCompletionBlock: lambda do |error, ref|
-                SVProgressHUD.dismiss
-                dismissViewControllerAnimated(true, completion: nil)
-              end
-            )
+            .childByAutoId
+
+    record.setValue(
+      {
+        text: text_view.text,
+        created_at: Time.now.to_i
+      },
+      withCompletionBlock: lambda do |error, ref|
+      end
+    )
+
+    image_record = firebase.childByAppendingPath(UIDevice.currentDevice.name)
+                           .childByAppendingPath("images")
+                           .childByAppendingPath(record.key)
+
+    image_base64 = UIImageJPEGRepresentation(@image, 0.8).base64Encoding
+    image_record.setValue(image_base64, withCompletionBlock: lambda do |error, ref|
+      SVProgressHUD.dismiss
+      dismissViewControllerAnimated(true, completion: nil)
+    end)
   end
 
   def pick_photo(sender)
