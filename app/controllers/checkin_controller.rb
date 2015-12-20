@@ -28,7 +28,7 @@ class CheckinController < UITableViewController
 
       foursquare.get_venues({ latitude: locations.first.latitude, longitude: locations.first.longitude }) do |venues|
         @venues = venues.map do |v|
-           { name: v["name"], address: v["location"]["formattedAddress"][0] }
+           { name: v["name"], address: v["location"]["formattedAddress"][0], id: v["id"] }
         end
 
         @cells = []
@@ -73,12 +73,13 @@ class CheckinController < UITableViewController
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
     venue = venues[indexPath.row]
     puts "#{venue[:name]} touched"
+    @venue = venue
     performSegueWithIdentifier("open_posting_screen", sender: self)
   end
 
   def prepareForSegue(segue, sender: sender)
     if segue.identifier == "open_posting_screen"
-      p segue.destinationViewController
+      segue.destinationViewController.venue = @venue
     end
   end
 
