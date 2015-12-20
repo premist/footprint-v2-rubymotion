@@ -15,6 +15,9 @@
 @implementation CheckinPostController
 @end
 
+@implementation CheckinSearchController
+@end
+
 @implementation LoginController
 @end
 

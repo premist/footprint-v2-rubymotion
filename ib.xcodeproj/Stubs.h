@@ -48,6 +48,15 @@
 
 @end
 
+@interface CheckinSearchController: UIViewController
+
+@property IBOutlet id text_field;
+
+-(IBAction) viewDidLoad;
+-(IBAction) search;
+
+@end
+
 @interface LoginController: UIViewController
 
 @property IBOutlet id email_field;

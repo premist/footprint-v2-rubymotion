@@ -1,7 +1,11 @@
 class CheckinController < UITableViewController
   extend IB
 
+  attr_accessor :search_query
+
   def viewDidLoad
+    @search_query = nil
+
     self.refreshControl = UIRefreshControl.new
     self.refreshControl.backgroundColor = "#eee".uicolor
     self.refreshControl.tintColor = "#222".uicolor
@@ -26,7 +30,7 @@ class CheckinController < UITableViewController
         return
       end
 
-      foursquare.get_venues({ latitude: locations.first.latitude, longitude: locations.first.longitude }) do |venues|
+      foursquare.get_venues({ latitude: locations.first.latitude, longitude: locations.first.longitude, query: @search_query }) do |venues|
         @venues = venues.map do |v|
            { name: v["name"], address: v["location"]["formattedAddress"][0], id: v["id"] }
         end

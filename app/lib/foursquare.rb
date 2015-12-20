@@ -16,7 +16,7 @@ class Foursquare
     query = params[:query]
 
     qs = qs_prefix + "&ll=#{latitude},#{longitude}"
-    qs << "&q=#{query}" if query != nil
+    qs << "&query=#{query.escape_url}" if query != nil
 
     AFMotion::JSON.get("#{@base_url}/venues/search#{qs}") do |response|
       venues = response.object["response"]["venues"]

@@ -383,6 +383,11 @@
                                 <action selector="close_view" destination="OJH-i2-7Wd" id="WGU-yB-76y"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="0pg-dC-FXy">
+                            <connections>
+                                <segue destination="7HM-yg-OdR" kind="presentation" id="6kd-v9-KG7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="PTH-Kh-w48" kind="show" identifier="open_posting_screen" id="35S-gu-hYV"/>
@@ -391,6 +396,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pa-ew-vwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986" y="801"/>
+        </scene>
+        <!--Checkin Search Controller-->
+        <scene sceneID="mab-75-0ou">
+            <objects>
+                <viewController id="7HM-yg-OdR" customClass="CheckinSearchController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jMM-22-DCX"/>
+                        <viewControllerLayoutGuide type="bottom" id="KCr-X8-RPB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EPy-F7-Fdx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r5-Jq-STS">
+                                <rect key="frame" x="40" y="85" width="520" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search" destination="7HM-yg-OdR" eventType="touchUpInside" id="6fx-HZ-NzS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gl-VL-84D">
+                                <rect key="frame" x="40" y="40" width="520" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1gl-VL-84D" firstAttribute="leading" secondItem="EPy-F7-Fdx" secondAttribute="leadingMargin" constant="20" id="831-8f-fPb"/>
+                            <constraint firstItem="3r5-Jq-STS" firstAttribute="leading" secondItem="EPy-F7-Fdx" secondAttribute="leadingMargin" constant="20" id="F7p-bA-ShC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3r5-Jq-STS" secondAttribute="trailing" constant="20" id="RJR-KS-zYW"/>
+                            <constraint firstItem="3r5-Jq-STS" firstAttribute="top" secondItem="1gl-VL-84D" secondAttribute="bottom" constant="15" id="tNh-JG-RsJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1gl-VL-84D" secondAttribute="trailing" constant="20" id="v9t-Nq-dRl"/>
+                            <constraint firstItem="1gl-VL-84D" firstAttribute="top" secondItem="jMM-22-DCX" secondAttribute="bottom" constant="20" id="yqX-m3-U1e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="text_field" destination="1gl-VL-84D" id="he1-X6-TpT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6bj-Jf-9SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986" y="1532"/>
         </scene>
         <!--Post-->
         <scene sceneID="wgf-ka-XM6">
