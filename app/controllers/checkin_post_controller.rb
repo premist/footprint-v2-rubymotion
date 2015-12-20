@@ -1,6 +1,8 @@
 class CheckinPostController < UIViewController
   extend IB
 
+  attr_accessor :venue
+
   outlet :text_view
   outlet :image_view
 
@@ -10,28 +12,27 @@ class CheckinPostController < UIViewController
 
   def publish(sender)
     SVProgressHUD.show
-    record = firebase.childByAppendingPath(UIDevice.currentDevice.name)
-            .childByAppendingPath("posts")
-            .childByAutoId
+
+    image_base64 = UIImageJPEGRepresentation(@image, 0.8).base64EncodedStringWithOptions(NSDataBase64Encoding64CharacterLineLength)
+
+    record = firebase.childByAppendingPath("queues")
+                     .childByAppendingPath("post")
+                     .childByAppendingPath("tasks")
+                     .childByAutoId
 
     record.setValue(
       {
-        text: text_view.text,
+        type: "checkin",
+        content: text_view.text,
+        image: image_base64,
+        venue_id: @venue["id"],
         created_at: Time.now.to_i
       },
       withCompletionBlock: lambda do |error, ref|
+        SVProgressHUD.dismiss
+        dismissViewControllerAnimated(true, completion: nil)
       end
     )
-
-    image_record = firebase.childByAppendingPath(UIDevice.currentDevice.name)
-                           .childByAppendingPath("images")
-                           .childByAppendingPath(record.key)
-
-    image_base64 = UIImageJPEGRepresentation(@image, 0.8).base64Encoding
-    image_record.setValue(image_base64, withCompletionBlock: lambda do |error, ref|
-      SVProgressHUD.dismiss
-      dismissViewControllerAnimated(true, completion: nil)
-    end)
   end
 
   def pick_photo(sender)
@@ -79,10 +80,7 @@ class CheckinPostController < UIViewController
   private
 
   def firebase
-    Dispatch.once {
-      @firebase ||= Firebase.alloc.initWithUrl(App::Env["FIREBASE_URL"])
-    }
-
+    @firebase ||= Firebase.alloc.initWithUrl(App::Env["FIREBASE_URL"])
     @firebase
   end
 end
