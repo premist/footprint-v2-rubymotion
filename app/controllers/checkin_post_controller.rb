@@ -13,26 +13,50 @@ class CheckinPostController < UIViewController
   def publish(sender)
     SVProgressHUD.show
 
+    # If there is no image, we only need to set a value.
+    if @image == nil
+      enqueue_publish
+      return
+    end
+
+    # Upload image and create value
     image_base64 = UIImageJPEGRepresentation(@image, 0.8).base64EncodedStringWithOptions(NSDataBase64Encoding64CharacterLineLength)
+
+    image_record = firebase.childByAppendingPath("media_uploads")
+                     .childByAutoId
+
+    image_record.setValue(image_base64, withCompletionBlock: lambda { |e, ref|
+      if e != nil
+        SVProgressHUD.showErrorWithStatus(e.localizedDescription)
+        return
+      end
+
+      enqueue_publish({ image: image_record.key })
+    })
+  end
+
+  def enqueue_publish(additional = {})
+    value = {
+      type: "checkin",
+      content: text_view.text,
+      venue_id: @venue[:id],
+      created_at: Time.now.to_i,
+      travel_id: App::Env["TRAVEL_ID"]
+    }.merge(additional)
 
     record = firebase.childByAppendingPath("queues")
                      .childByAppendingPath("post")
                      .childByAppendingPath("tasks")
                      .childByAutoId
 
-    record.setValue(
-      {
-        type: "checkin",
-        content: text_view.text,
-        image: image_base64,
-        venue_id: @venue["id"],
-        created_at: Time.now.to_i
-      },
-      withCompletionBlock: lambda do |error, ref|
-        SVProgressHUD.dismiss
-        dismissViewControllerAnimated(true, completion: nil)
-      end
-    )
+    record.setValue(value, withCompletionBlock: lambda do |e, ref|
+      finalize_publish(e, ref)
+    end)
+  end
+
+  def finalize_publish(e, ref)
+    SVProgressHUD.dismiss
+    dismissViewControllerAnimated(true, completion: nil)
   end
 
   def pick_photo(sender)
