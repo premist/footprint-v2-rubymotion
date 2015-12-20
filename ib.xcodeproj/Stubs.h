@@ -12,6 +12,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
+#import <SafariServices/SafariServices.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
@@ -46,6 +47,18 @@
 
 @end
 
+@interface LoginController: UIViewController
+
+@property IBOutlet id email_field;
+@property IBOutlet id password_field;
+
+-(IBAction) viewDidLoad;
+-(IBAction) close_view;
+-(IBAction) login;
+-(IBAction) firebase;
+
+@end
+
 @interface MainController: UIViewController
 
 @property IBOutlet id location_button;
@@ -62,6 +75,7 @@
 -(IBAction) open_login_screen;
 -(IBAction) open_connect_foursquare;
 -(IBAction) open_connect_twitter;
+-(IBAction) safariViewControllerDidFinish:(id) controller;
 -(IBAction) firebase;
 -(IBAction) manager;
 

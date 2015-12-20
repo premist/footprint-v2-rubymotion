@@ -9,14 +9,16 @@ class MainController < UIViewController
     manager.after_authorize = lambda do |authorized|
       if authorized
         puts "Authorized"
-        # location_button.setTitle("Thanks!", forState: UIControlStateNormal)
       else
         puts "Not Authorized"
-        # location.button.setTitle("No thanks!", forState: UIControlStateNormal)
       end
     end
 
     manager.authorize!
+
+    if firebase.authData != nil
+      login.setTitle("로그아웃", forState: UIControlStateNormal)
+    end
   end
 
   # IB Outlets
@@ -41,8 +43,13 @@ class MainController < UIViewController
 
   def open_login_screen
     if firebase.authData != nil
-      SVProgressHUD.showSuccessWithStatus("Already logged in")
+      firebase.unauth
+      SVProgressHUD.showSuccessWithStatus("Logged out")
+      login.setTitle("로그인", forState: UIControlStateNormal)
+      return
     end
+
+    performSegueWithIdentifier("open_login_screen", sender: self)
   end
 
   def open_connect_foursquare

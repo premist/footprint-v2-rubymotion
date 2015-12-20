@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Main Root View Controller-->
         <scene sceneID="p1x-MC-Ja7">
             <objects>
-                <navigationController id="3Wq-BV-bkR" sceneMemberID="viewController">
+                <navigationController id="3Wq-BV-bkR" customClass="MainRootViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rep-hA-Cfc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,6 +20,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ub-dv-bH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-353" y="-27"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yni-3x-5YU">
+            <objects>
+                <navigationController id="7qT-eL-T8W" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x0N-IN-P5Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lm6-pD-hlM" kind="relationship" relationship="rootViewController" id="Oka-Ri-y31"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtk-WC-lkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="-717"/>
+        </scene>
+        <!--Log in-->
+        <scene sceneID="L3e-S7-ciC">
+            <objects>
+                <viewController id="lm6-pD-hlM" customClass="LoginController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lh9-pj-gUR"/>
+                        <viewControllerLayoutGuide type="bottom" id="qiB-0F-d4f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m2c-iu-y12">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0W-hq-BKy">
+                                <rect key="frame" x="35" y="85" width="530" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vi1-Vt-ylg">
+                                <rect key="frame" x="35" y="125" width="530" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCM-mD-RYG">
+                                <rect key="frame" x="279" y="170" width="42" height="30"/>
+                                <state key="normal" title="Log in"/>
+                                <connections>
+                                    <action selector="login" destination="lm6-pD-hlM" eventType="touchUpInside" id="uZq-Lh-gpd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I0W-hq-BKy" firstAttribute="leading" secondItem="m2c-iu-y12" secondAttribute="leadingMargin" constant="15" id="6c4-jn-ua8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vi1-Vt-ylg" secondAttribute="trailing" constant="15" id="BtU-50-bCt"/>
+                            <constraint firstItem="Vi1-Vt-ylg" firstAttribute="centerX" secondItem="m2c-iu-y12" secondAttribute="centerX" id="GMz-0A-ZSy"/>
+                            <constraint firstItem="Vi1-Vt-ylg" firstAttribute="leading" secondItem="m2c-iu-y12" secondAttribute="leadingMargin" constant="-7" id="GN1-rw-Tun"/>
+                            <constraint firstItem="qiB-0F-d4f" firstAttribute="top" secondItem="gCM-mD-RYG" secondAttribute="bottom" constant="400" id="d2x-e9-6Fh"/>
+                            <constraint firstItem="I0W-hq-BKy" firstAttribute="centerX" secondItem="m2c-iu-y12" secondAttribute="centerX" id="dqi-qM-TEl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I0W-hq-BKy" secondAttribute="trailing" constant="15" id="gPR-KN-5kf"/>
+                            <constraint firstItem="Vi1-Vt-ylg" firstAttribute="top" secondItem="I0W-hq-BKy" secondAttribute="bottom" constant="10" id="haK-Ow-9Hp"/>
+                            <constraint firstItem="qiB-0F-d4f" firstAttribute="top" secondItem="Vi1-Vt-ylg" secondAttribute="bottom" constant="445" id="mWt-Qe-FKS"/>
+                            <constraint firstItem="gCM-mD-RYG" firstAttribute="centerX" secondItem="m2c-iu-y12" secondAttribute="centerX" id="rTM-UQ-teN"/>
+                            <constraint firstItem="Vi1-Vt-ylg" firstAttribute="leading" secondItem="m2c-iu-y12" secondAttribute="leadingMargin" constant="15" id="uNa-wS-HIx"/>
+                            <constraint firstItem="gCM-mD-RYG" firstAttribute="top" secondItem="Vi1-Vt-ylg" secondAttribute="bottom" constant="15" id="zzr-Ku-yda"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GN1-rw-Tun"/>
+                                <exclude reference="mWt-Qe-FKS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Log in" id="jbq-rg-rMY">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Iuw-kf-cTc">
+                            <connections>
+                                <action selector="close_view" destination="lm6-pD-hlM" id="sDI-ss-CqR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="email_field" destination="I0W-hq-BKy" id="YzH-99-tHh"/>
+                        <outlet property="password_field" destination="Vi1-Vt-ylg" id="U66-c1-onm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6wH-BN-75u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1015" y="-717"/>
         </scene>
         <!--Main-->
         <scene sceneID="YJ3-jg-xQB">
@@ -108,16 +192,17 @@
                         <outlet property="login" destination="t9k-JE-sES" id="kFh-C9-a7u"/>
                         <outlet property="swarm_checkin_button" destination="Oja-sQ-Bdr" id="8NZ-ml-DZf"/>
                         <segue destination="GaF-90-8XM" kind="presentation" identifier="open_checkin_screen" id="haA-GX-Ls7"/>
+                        <segue destination="7qT-eL-T8W" kind="presentation" identifier="open_login_screen" id="VnT-Iu-znS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eav-HQ-5aS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="343" y="-27"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Checkin Root View Controller-->
         <scene sceneID="f8t-x7-HQi">
             <objects>
-                <navigationController id="GaF-90-8XM" sceneMemberID="viewController">
+                <navigationController id="GaF-90-8XM" customClass="CheckinRootViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w2d-UU-Kt2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
