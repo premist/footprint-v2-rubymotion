@@ -5,6 +5,7 @@ class LoginController < UIViewController
   outlet :password_field
 
   def viewDidLoad
+    email_field.becomeFirstResponder
   end
 
   def close_view
