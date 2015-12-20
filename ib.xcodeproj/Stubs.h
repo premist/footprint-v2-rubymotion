@@ -41,6 +41,7 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) publish:(id) sender;
+-(IBAction) enqueue_publish:(id) additional;
 -(IBAction) pick_photo:(id) sender;
 -(IBAction) image;
 -(IBAction) firebase;
