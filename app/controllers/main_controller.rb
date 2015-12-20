@@ -22,6 +22,9 @@ class MainController < UIViewController
   # IB Outlets
   outlet :location_button
   outlet :swarm_checkin_button
+  outlet :login
+  outlet :connect_foursquare
+  outlet :connect_twitter
 
   # IB methods
   def authorize_location(sender)
@@ -33,25 +36,44 @@ class MainController < UIViewController
   end
 
   def open_checkin_screen
-    Dispatch.once { performSegueWithIdentifier("open_checkin_screen", sender: self) }
+    performSegueWithIdentifier("open_checkin_screen", sender: self)
+  end
+
+  def open_login_screen
+    if firebase.authData != nil
+      SVProgressHUD.showSuccessWithStatus("Already logged in")
+    end
+  end
+
+  def open_connect_foursquare
+    foursquare_url = "#{App::Env['NXO_API_URL']}/link/foursquare?token=#{firebase.authData.token}".nsurl
+    safari_view = SFSafariViewController.alloc.initWithURL(foursquare_url)
+    safari_view.delegate = self
+
+    presentViewController(safari_view, animated: true, completion: nil)
+  end
+
+  def open_connect_twitter
+    twitter_url = "#{App::Env['NXO_API_URL']}/link/twitter?token=#{firebase.authData.token}".nsurl
+    safari_view = SFSafariViewController.alloc.initWithURL(twitter_url)
+    safari_view.delegate = self
+
+    presentViewController(safari_view, animated: true, completion: nil)
+  end
+
+  def safariViewControllerDidFinish(controller)
   end
 
   private
 
   def firebase
-    Dispatch.once {
-      @firebase ||= Firebase.alloc.initWithUrl(App::Env["FIREBASE_URL"])
-    }
+    @firebase ||= Firebase.alloc.initWithUrl(App::Env["FIREBASE_URL"])
   end
 
   def manager
-    Dispatch.once {
-      @manager ||= Locman::Manager.new(
-        background: false,
-        distance_filter: 20
-      )
-    }
-
-    @manager
+    @manager ||= Locman::Manager.new(
+      background: false,
+      distance_filter: 20
+    )
   end
 end

@@ -13,7 +13,7 @@ env_vars = Dotenv.load
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = "next-one"
-  app.frameworks += %w(CoreLocation Photos)
+  app.frameworks += %w(CoreLocation Photos SafariServices)
 
   app.identifier = ENV["APP_IDENTIFIER"]
 

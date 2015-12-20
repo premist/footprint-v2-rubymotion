@@ -43,6 +43,10 @@ class CheckinController < UITableViewController
     manager.update!
   end
 
+  def close_view
+    dismissViewControllerAnimated(true, completion: nil)
+  end
+
   def tableView(tableView, estimatedHeightForRowAtIndexPath: indexPath)
     UITableViewAutomaticDimension
   end
@@ -81,23 +85,17 @@ class CheckinController < UITableViewController
   private
 
   def venues
-    Dispatch.once { @venues ||= [] }
-    @venues
+    @venues ||= []
   end
 
   def foursquare
-    Dispatch.once { @foursquare ||= Foursquare.new }
-    @foursquare
+    @foursquare ||= Foursquare.new
   end
 
   def manager
-    Dispatch.once {
-      @manager ||= Locman::Manager.new(
-        background: false,
-        distance_filter: 20
-      )
-    }
-
-    @manager
+    @manager ||= Locman::Manager.new(
+      background: false,
+      distance_filter: 20
+    )
   end
 end

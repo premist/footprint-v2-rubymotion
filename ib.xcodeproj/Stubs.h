@@ -26,6 +26,7 @@
 @interface CheckinController: UITableViewController
 -(IBAction) viewDidLoad;
 -(IBAction) update_view;
+-(IBAction) close_view;
 -(IBAction) venues;
 -(IBAction) foursquare;
 -(IBAction) manager;
@@ -49,12 +50,18 @@
 
 @property IBOutlet id location_button;
 @property IBOutlet id swarm_checkin_button;
+@property IBOutlet id login;
+@property IBOutlet id connect_foursquare;
+@property IBOutlet id connect_twitter;
 
 -(IBAction) hello;
 -(IBAction) viewDidLoad;
 -(IBAction) authorize_location:(id) sender;
 -(IBAction) swarm_checkin:(id) sender;
 -(IBAction) open_checkin_screen;
+-(IBAction) open_login_screen;
+-(IBAction) open_connect_foursquare;
+-(IBAction) open_connect_twitter;
 -(IBAction) firebase;
 -(IBAction) manager;
 
@@ -67,5 +74,7 @@
 @end
 
 @interface UIImage: NSObject
+-(IBAction) normalize;
+
 @end
 

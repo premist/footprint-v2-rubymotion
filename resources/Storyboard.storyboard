@@ -33,8 +33,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nww-er-86E">
-                                <rect key="frame" x="283.5" y="84" width="33.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="footprint v0.0.1 alpha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nww-er-86E">
+                                <rect key="frame" x="220" y="84" width="160" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,26 +54,58 @@
                                     <action selector="swarm_checkin:" destination="IcI-0q-WWB" eventType="touchUpInside" id="dqd-vf-hH2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9k-JE-sES">
+                                <rect key="frame" x="281" y="214" width="39" height="30"/>
+                                <state key="normal" title="로그인"/>
+                                <connections>
+                                    <action selector="open_login_screen" destination="IcI-0q-WWB" eventType="touchUpInside" id="6hk-fy-hUN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5H-jL-xJh">
+                                <rect key="frame" x="259" y="254" width="82" height="30"/>
+                                <state key="normal" title="포스퀘어 연동"/>
+                                <connections>
+                                    <action selector="open_connect_foursquare" destination="IcI-0q-WWB" eventType="touchUpInside" id="bG9-qL-kbW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-4w-zLb">
+                                <rect key="frame" x="266" y="294" width="69" height="30"/>
+                                <state key="normal" title="트위터 연동"/>
+                                <connections>
+                                    <action selector="open_connect_twitter" destination="IcI-0q-WWB" eventType="touchUpInside" id="0ut-kj-zaX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nww-er-86E" firstAttribute="top" secondItem="kgb-Wa-ool" secondAttribute="bottom" id="3uJ-wy-bU6"/>
+                            <constraint firstItem="Jv6-4w-zLb" firstAttribute="top" secondItem="y5H-jL-xJh" secondAttribute="bottom" constant="10" id="50S-fO-x76"/>
+                            <constraint firstItem="y5H-jL-xJh" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="7zC-iC-cFM"/>
+                            <constraint firstItem="Jv6-4w-zLb" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="ErD-Z9-L8L"/>
                             <constraint firstItem="nww-er-86E" firstAttribute="top" secondItem="kgb-Wa-ool" secondAttribute="bottom" constant="20" id="IXU-gy-Hrx"/>
+                            <constraint firstItem="t9k-JE-sES" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="ZOi-8m-TCF"/>
                             <constraint firstItem="Oja-sQ-Bdr" firstAttribute="top" secondItem="Or0-eI-61K" secondAttribute="bottom" constant="10" id="b6X-eM-GcD"/>
                             <constraint firstItem="Or0-eI-61K" firstAttribute="top" secondItem="nww-er-86E" secondAttribute="bottom" constant="30" id="cmy-Ik-DqE"/>
+                            <constraint firstItem="9nt-f3-mgI" firstAttribute="top" secondItem="y5H-jL-xJh" secondAttribute="bottom" constant="299" id="dKY-KH-hKR"/>
                             <constraint firstItem="nww-er-86E" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="f6g-Kz-zK1"/>
                             <constraint firstItem="Oja-sQ-Bdr" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="gQV-9d-tAn"/>
+                            <constraint firstItem="y5H-jL-xJh" firstAttribute="top" secondItem="t9k-JE-sES" secondAttribute="bottom" constant="10" id="gns-7X-cTn"/>
                             <constraint firstItem="Or0-eI-61K" firstAttribute="centerX" secondItem="Iyd-3P-d8w" secondAttribute="centerX" id="sc6-eq-vfc"/>
+                            <constraint firstItem="t9k-JE-sES" firstAttribute="top" secondItem="Oja-sQ-Bdr" secondAttribute="bottom" constant="10" id="tzX-Oc-UPd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="3uJ-wy-bU6"/>
+                                <exclude reference="dKY-KH-hKR"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Hello there!" id="x8W-Mf-MXO"/>
                     <connections>
+                        <outlet property="connect_foursquare" destination="y5H-jL-xJh" id="Mqp-Av-5H4"/>
+                        <outlet property="connect_twitter" destination="Jv6-4w-zLb" id="EUi-kD-kp0"/>
                         <outlet property="location_button" destination="Or0-eI-61K" id="5Z1-J5-uah"/>
+                        <outlet property="login" destination="t9k-JE-sES" id="kFh-C9-a7u"/>
                         <outlet property="swarm_checkin_button" destination="Oja-sQ-Bdr" id="8NZ-ml-DZf"/>
                         <segue destination="GaF-90-8XM" kind="presentation" identifier="open_checkin_screen" id="haA-GX-Ls7"/>
                     </connections>
@@ -180,7 +212,13 @@
                             <outlet property="delegate" destination="OJH-i2-7Wd" id="7ez-yH-VtT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Venues" id="Gzx-mY-akG"/>
+                    <navigationItem key="navigationItem" title="Venues" id="Gzx-mY-akG">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="CcM-sN-mXj">
+                            <connections>
+                                <action selector="close_view" destination="OJH-i2-7Wd" id="WGU-yB-76y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="PTH-Kh-w48" kind="show" identifier="open_posting_screen" id="35S-gu-hYV"/>
                     </connections>

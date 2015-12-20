@@ -5,7 +5,7 @@ gem "ib"
 gem "motion-cocoapods"
 
 gem "dotenv", "~> 2.0"
-gem "sugarcube", "~> 3.3", require: ["sugarcube-color"]
+gem "sugarcube", "~> 3.3", require: ["sugarcube-color", "sugarcube-foundation"]
 
 gem "motion-locman", "~> 0.3"
 gem "afmotion", "~> 2.6"
