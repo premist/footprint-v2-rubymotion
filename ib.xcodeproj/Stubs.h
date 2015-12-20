@@ -66,6 +66,7 @@
 @property IBOutlet id login;
 @property IBOutlet id connect_foursquare;
 @property IBOutlet id connect_twitter;
+@property IBOutlet id create_travel;
 
 -(IBAction) hello;
 -(IBAction) viewDidLoad;
@@ -78,6 +79,17 @@
 -(IBAction) safariViewControllerDidFinish:(id) controller;
 -(IBAction) firebase;
 -(IBAction) manager;
+
+@end
+
+@interface TravelNewController: UIViewController
+
+@property IBOutlet id travel_title;
+
+-(IBAction) viewDidLoad;
+-(IBAction) close_view;
+-(IBAction) create_travel;
+-(IBAction) firebase;
 
 @end
 

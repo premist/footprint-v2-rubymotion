@@ -21,6 +21,9 @@
 @implementation MainController
 @end
 
+@implementation TravelNewController
+@end
+
 @implementation Foursquare
 @end
 

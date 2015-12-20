@@ -27,6 +27,7 @@ class MainController < UIViewController
   outlet :login
   outlet :connect_foursquare
   outlet :connect_twitter
+  outlet :create_travel
 
   # IB methods
   def authorize_location(sender)
