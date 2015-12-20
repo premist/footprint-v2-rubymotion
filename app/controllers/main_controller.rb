@@ -34,6 +34,11 @@ class MainController < UIViewController
   end
 
   def swarm_checkin(sender)
+    if firebase.authData == nil
+      SVProgressHUD.showErrorWithStatus("Login in first")
+      return
+    end
+
     open_checkin_screen
   end
 
