@@ -421,12 +421,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sc-cC-Edp">
+                                <rect key="frame" x="30" y="130" width="540" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="close" destination="7HM-yg-OdR" eventType="touchUpInside" id="gFp-AA-hyq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1gl-VL-84D" firstAttribute="leading" secondItem="EPy-F7-Fdx" secondAttribute="leadingMargin" constant="20" id="831-8f-fPb"/>
                             <constraint firstItem="3r5-Jq-STS" firstAttribute="leading" secondItem="EPy-F7-Fdx" secondAttribute="leadingMargin" constant="20" id="F7p-bA-ShC"/>
+                            <constraint firstItem="8Sc-cC-Edp" firstAttribute="leading" secondItem="EPy-F7-Fdx" secondAttribute="leadingMargin" constant="10" id="PUJ-0F-Pqr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3r5-Jq-STS" secondAttribute="trailing" constant="20" id="RJR-KS-zYW"/>
+                            <constraint firstItem="8Sc-cC-Edp" firstAttribute="top" secondItem="3r5-Jq-STS" secondAttribute="bottom" constant="15" id="W27-1w-3ct"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Sc-cC-Edp" secondAttribute="trailing" constant="10" id="iAc-OT-NLD"/>
                             <constraint firstItem="3r5-Jq-STS" firstAttribute="top" secondItem="1gl-VL-84D" secondAttribute="bottom" constant="15" id="tNh-JG-RsJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1gl-VL-84D" secondAttribute="trailing" constant="20" id="v9t-Nq-dRl"/>
                             <constraint firstItem="1gl-VL-84D" firstAttribute="top" secondItem="jMM-22-DCX" secondAttribute="bottom" constant="20" id="yqX-m3-U1e"/>

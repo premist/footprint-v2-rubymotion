@@ -54,6 +54,7 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) search;
+-(IBAction) close;
 
 @end
 
